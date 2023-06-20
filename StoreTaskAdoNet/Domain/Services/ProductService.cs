@@ -18,25 +18,6 @@ namespace StoreTaskAdoNet.Domain.Services
             _repository = new ProductRepository();
         }
 
-        public ObservableCollection<Product> GetFromHigherToLower(bool isLower)
-        {
-            IOrderedEnumerable<Product> items = null;
-            if (!isLower)
-            {
-                items = from p in _repository.GetAll()
-                        orderby p.Price descending
-                        select p;
-            }
-            else
-            {
-                items = from p in _repository.GetAll()
-                        orderby p.Price ascending
-                        select p;
-            }
-
-            return new ObservableCollection<Product>(items);
-        }
-
         public ObservableCollection<Product> GetAllProducts()
         {
             IOrderedEnumerable<Product> items = null;
